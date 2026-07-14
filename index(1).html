@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>For My Meddie ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+body{margin:0;display:flex;justify-content:center;align-items:center;height:100vh;background:#12000c;color:#fff;overflow:hidden;font-family:Arial}
+.wrap{text-align:center;max-width:700px;padding:20px}
+img{width:260px;height:260px;object-fit:cover;border-radius:20px;box-shadow:0 0 25px hotpink}
+#text{font-family:'Great Vibes',cursive;font-size:42px;min-height:160px;opacity:0;transition:opacity 1.2s;margin-top:25px}
+button{padding:14px 28px;border:none;border-radius:30px;background:#ff4d88;color:#fff;font-size:18px;cursor:pointer}
+.heart{position:fixed;bottom:-20px;animation:f 8s linear infinite}
+@keyframes f{to{transform:translateY(-120vh);opacity:0}}
+</style></head><body>
+<div class="wrap">
+<button id="start">Open ❤️</button><br><br>
+<img id="pic" src="photo.jpg" style="display:none">
+<div id="text"></div>
+<audio id="music"><source src="song.mp3" type="audio/mpeg"></audio>
+</div>
+<script>
+const lines=[
+"My Dearest Meddie...",
+"Every time I think about you, I find myself smiling without even realizing it.",
+"You've brought so much happiness into my life.",
+"I miss your smile, your laugh and every little moment we share.",
+"No matter how far apart we are, you're always in my heart.",
+"I love you more than words can ever explain.",
+"Forever Yours, Lindo ❤️"
+];
+for(let i=0;i<40;i++){let h=document.createElement('div');h.className='heart';h.textContent='❤️';h.style.left=Math.random()*100+'vw';h.style.fontSize=(15+Math.random()*20)+'px';h.style.animationDuration=(5+Math.random()*5)+'s';document.body.appendChild(h);}
+start.onclick=()=>{
+start.style.display='none';pic.style.display='block';
+try{music.currentTime=70;}catch(e){}
+music.play().catch(()=>{});
+let i=0;
+function show(){
+ if(i>=lines.length)return;
+ text.style.opacity=0;
+ setTimeout(()=>{
+   text.textContent=lines[i];
+   text.style.opacity=1;
+   setTimeout(()=>{
+      text.style.opacity=0;
+      i++;
+      setTimeout(show,1200);
+   },3000);
+ },500);
+}
+show();
+}
+</script></body></html>
